@@ -26,7 +26,7 @@ namespace Tasks.Application.Services
         }
         public async void CheckWebPage(Uri webpageUrl)
         {
-            webdriver.Navigate().GoToUrl(webpageUrl.AbsoluteUri)
+            webdriver.Navigate().GoToUrl(webpageUrl.AbsoluteUri);
         }
         public void MarkPoints()
         {

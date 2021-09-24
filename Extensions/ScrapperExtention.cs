@@ -29,14 +29,14 @@ namespace Tasks.Extensions
                  string currentAssamblyDirectoryName = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
 
-                 if (currentWebDriver == nameof(WebDriverTypes.Firefox))
+                 if (currentWebDriver == nameof(WebDriverTypes.Firefox).ToLower())
                  {
                      FirefoxOptions driverOptions = new FirefoxOptions();
                         //make window hidden. 
                         driverOptions.AddArgument("--headless");
                      driver = new FirefoxDriver(currentAssamblyDirectoryName, driverOptions);
                  }
-                 else if (currentWebDriver == nameof(WebDriverTypes.Chrome))
+                 else if (currentWebDriver == nameof(WebDriverTypes.Chrome).ToLower())
                  {
 
                      ChromeOptions options = new ChromeOptions();

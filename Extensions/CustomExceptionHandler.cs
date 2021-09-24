@@ -33,6 +33,7 @@ namespace Tasks.Extensions
                             errorDto.Status = 500;
                         errorDto.Errors.Add(ex.Message);
 
+                        context.Response.StatusCode = errorDto.Status;
                         await context.Response.WriteAsync(JsonConvert.SerializeObject(errorDto));
                     }
                 });
