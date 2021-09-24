@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="content\" />
     <Folder Include="Features\HotelFeatures\Commands\" />
   </ItemGroup>
 
