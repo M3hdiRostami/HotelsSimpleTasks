@@ -24,4 +24,10 @@
     <ProjectReference Include="..\..\Tasks.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="content\booking.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
