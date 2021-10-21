@@ -3,8 +3,8 @@ namespace Tasks.DTOs
 
     public class RateTag
     {
-        public string name { get; set; }
-        public bool shape { get; set; }
+        public string Name { get; set; }
+        public bool Shape { get; set; }
     }
 
 }

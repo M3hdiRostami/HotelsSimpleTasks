@@ -8,11 +8,11 @@ namespace Tasks.Validators
     {
         public GetHotelDetailsByParamsQueryValidator()
         {
-            RuleFor(c => c.arrivalDate).NotNull();
-            RuleFor(c => c.hotelID)
+            RuleFor(c => c.ArrivalDate).NotNull();
+            RuleFor(c => c.HotelID)
                 .NotNull()
                 .GreaterThan(0);
-            RuleFor(c => c.jsonDataContxt).Must(item => item.Count > 0);
+            RuleFor(c => c.JsonDataContxt).Must(item => item.Count > 0);
         }
     }
 }

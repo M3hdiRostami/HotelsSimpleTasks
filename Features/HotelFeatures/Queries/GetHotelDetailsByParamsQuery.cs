@@ -10,9 +10,9 @@ namespace Tasks.Application.Features.HotelFeatures.Queries
 { 
     public class GetHotelDetailsByParamsQuery : IRequest<HotelFilterResult>
     {
-        public List<HotelFilterResult> jsonDataContxt { get; set; }
-        public int hotelID { get; set; }
-        public DateTime arrivalDate { get; set; }  
+        public List<HotelFilterResult> JsonDataContxt { get; set; }
+        public int HotelID { get; set; }
+        public DateTime ArrivalDate { get; set; }  
 
 
         public class GetHotelDetailsByParamsQueryHandler : IRequestHandler<GetHotelDetailsByParamsQuery, HotelFilterResult>
@@ -24,13 +24,13 @@ namespace Tasks.Application.Features.HotelFeatures.Queries
             //}
             public async Task<HotelFilterResult> Handle(GetHotelDetailsByParamsQuery query, CancellationToken cancellationToken)
             {
-                var result = query.jsonDataContxt.Select(item => new HotelFilterResult
+                var result = query.JsonDataContxt.Select(item => new HotelFilterResult
                 {
-                    hotel = item.hotel,
-                    hotelRates = item.hotelRates.Where(hr => hr.targetDay.ToShortDateString() == query.arrivalDate.ToShortDateString()).ToList()
+                    Hotel = item.Hotel,
+                    HotelRates = item.HotelRates.Where(hr => hr.TargetDay.ToShortDateString() == query.ArrivalDate.ToShortDateString()).ToList()
 
                 })
-                .Where(h => h.hotel.hotelID == query.hotelID).FirstOrDefault();
+                .Where(h => h.Hotel.HotelID == query.HotelID).FirstOrDefault();
 
                 
                 return result;

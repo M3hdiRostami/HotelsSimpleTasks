@@ -3,8 +3,8 @@ namespace Tasks.DTOs{
 
     public class HotelFilterResult
     {
-        public Hotel hotel { get; set; }
-        public List<HotelRate> hotelRates { get; set; }
+        public Hotel Hotel { get; set; }
+        public List<HotelRate> HotelRates { get; set; }
     }
 
 }

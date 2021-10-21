@@ -3,8 +3,8 @@ namespace Tasks.DTOs
 
     public class Price
     {
-        public string currency { get; set; }
-        public double numericFloat { get; set; }
+        public string Currency { get; set; }
+        public double NumericFloat { get; set; }
         public int numericInteger { get; set; }
     }
 

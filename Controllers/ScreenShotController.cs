@@ -22,13 +22,13 @@ namespace Tasks.Controllers
     [ApiVersion("1.0")]
     public class ScreenShotController : ControllerBase
     {
-        private IWebHostEnvironment Environment;
-        private ScrapperService scrapperService;
-        private const short screenshotPadding = 50;
-        public ScreenShotController(IWebHostEnvironment _environment, ScrapperService scrapperService)
+        private IWebHostEnvironment _environment;
+        private ScrapperService _scrapperService;
+        private const short _screenshotPadding = 50;
+        public ScreenShotController(IWebHostEnvironment environment, ScrapperService scrapperService)
         {
-            Environment = _environment;
-            this.scrapperService = scrapperService;
+            _environment = environment;
+            _scrapperService = scrapperService;
         }
 
         [HttpGet]
@@ -37,18 +37,18 @@ namespace Tasks.Controllers
         public async ValueTask<ActionResult> Take(string? pageUrl)
         {
             
-            string htlmFileAddress = pageUrl ?? (Environment.ContentRootPath + @"\content\booking.html");
+            string htlmFileAddress = pageUrl ?? (_environment.ContentRootPath + @"\content\booking.html");
             //Fetch webpage
-            scrapperService.CheckWebPage(new Uri(htlmFileAddress));
+            _scrapperService.CheckWebPage(new Uri(htlmFileAddress));
             //Find declared points and mark 
-            scrapperService.MarkPoints();
+            _scrapperService.MarkPoints();
            
             //Change window size for taking full screenshot
-            scrapperService.SetWindowSize(scrapperService.GetWebpageSize(), screenshotPadding, screenshotPadding);
+            _scrapperService.SetWindowSize(_scrapperService.GetWebpageSize(), _screenshotPadding, _screenshotPadding);
             //Get screenshot file as byte array
-            var screenshot = scrapperService.GetScreenShot();
+            var screenShot = _scrapperService.GetScreenShot();
             //Stream screenshot as File to response
-            return await  ValueTask.FromResult(new FileContentResult(screenshot, "Application/octet-stream")
+            return await  ValueTask.FromResult(new FileContentResult(screenShot, "Application/octet-stream")
             {
                 FileDownloadName = "Screenshot.png"
             });

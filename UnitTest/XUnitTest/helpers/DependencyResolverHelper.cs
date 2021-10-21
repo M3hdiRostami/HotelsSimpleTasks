@@ -15,12 +15,12 @@ namespace XUnitTest.helpers
 {
     public class DependencyResolverHelper
     {
-        protected readonly IWebHost _webHost;
-        protected  IConfiguration _configuration => GetService<IConfiguration>();
-        protected IWebHostEnvironment _webHostEnvironment => GetService<IWebHostEnvironment>();
+        protected  IWebHost Host;
+        protected  IConfiguration Configuration => GetService<IConfiguration>();
+        protected IWebHostEnvironment WebHostEnvironment => GetService<IWebHostEnvironment>();
         
         public DependencyResolverHelper() {
-            _webHost = WebHost.CreateDefaultBuilder()
+            Host = WebHost.CreateDefaultBuilder()
                  .UseStartup<Startup>()
                  .Build();
            
@@ -28,7 +28,7 @@ namespace XUnitTest.helpers
         
         public T GetService<T>()
         {
-            using (var serviceScope = _webHost.Services.CreateScope())
+            using (var serviceScope = Host.Services.CreateScope())
             {
                 var services = serviceScope.ServiceProvider;
                 try

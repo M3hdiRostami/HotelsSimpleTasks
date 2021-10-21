@@ -16,17 +16,17 @@ namespace Tasks.Application.Services
     {   
 
         
-        private readonly RemoteWebDriver webdriver;
-        private readonly List<ScreenshotMarkerOption> ScreenshotMarkerOption;
+        protected RemoteWebDriver WebDriver;
+        protected List<ScreenshotMarkerOption> ScreenshotMarkerOption;
         public ScrapperService(IOptions<List<ScreenshotMarkerOption>> screenshotMarkerOption, RemoteWebDriver driver)
         {
 
-            webdriver = driver;
+            WebDriver = driver;
             ScreenshotMarkerOption = screenshotMarkerOption.Value;
         }
         public async void CheckWebPage(Uri webpageUrl)
         {
-            webdriver.Navigate().GoToUrl(webpageUrl.AbsoluteUri);
+            WebDriver.Navigate().GoToUrl(webpageUrl.AbsoluteUri);
         }
         public void MarkPoints()
         {
@@ -36,19 +36,19 @@ namespace Tasks.Application.Services
             {
                 jsLines.Append($"document.querySelector('{configItem.selector}').style.backgroundColor='{configItem.color}';");
             }
-            webdriver.ExecuteScript(jsLines.ToString());
+            WebDriver.ExecuteScript(jsLines.ToString());
           
         }
         public byte[] GetScreenShot()
         {
-            var screenshot = (webdriver as OpenQA.Selenium.ITakesScreenshot).GetScreenshot();
+            var screenshot = (WebDriver as OpenQA.Selenium.ITakesScreenshot).GetScreenshot();
             return screenshot.AsByteArray;
         }
         public Size GetWebpageSize()
         {
             //get webpage Size
-            int w = Convert.ToInt16(webdriver.ExecuteScript("return document.body.parentNode.scrollWidth"));
-            int h = Convert.ToInt16(webdriver.ExecuteScript("return document.body.parentNode.scrollHeight"));
+            int w = Convert.ToInt16(WebDriver.ExecuteScript("return document.body.parentNode.scrollWidth"));
+            int h = Convert.ToInt16(WebDriver.ExecuteScript("return document.body.parentNode.scrollHeight"));
             
             return new Size(w, h);
         }
@@ -57,7 +57,7 @@ namespace Tasks.Application.Services
             
             size.Height += extraYPadding;
             size.Width += extraXPadding;
-            webdriver.Manage().Window.Size = size;
+            WebDriver.Manage().Window.Size = size;
         }
 
 

@@ -13,11 +13,11 @@ namespace Tasks.Extensions
 {
     public static class ScrapperExtention
     {
-        public static IServiceCollection LoadScrapperScreenshotConfig(this IServiceCollection services, IConfiguration Configuration)
+        public static IServiceCollection LoadScrapperScreenshotConfig(this IServiceCollection services, IConfiguration configuration)
         {
-           return services.Configure<List<ScreenshotMarkerOption>>(confiquration => Configuration.GetSection("ScreenshotMarkerConfig:Markers").Bind(confiquration));
+           return services.Configure<List<ScreenshotMarkerOption>>(c => configuration.GetSection("ScreenshotMarkerConfig:Markers").Bind(c));
         }
-        public static IServiceCollection AddScrapper(this IServiceCollection services, IConfiguration Configuration)
+        public static IServiceCollection AddScrapper(this IServiceCollection services, IConfiguration configuration)
         {
 
             services.AddScoped<ScrapperService>();
@@ -25,23 +25,23 @@ namespace Tasks.Extensions
              run =>
              {
                  RemoteWebDriver driver;
-                 string currentWebDriver = Configuration.GetSection("ScreenshotMarkerConfig:WebDriver").Value.ToLower();
+                 string currentWebDriver = configuration.GetSection("ScreenshotMarkerConfig:WebDriver").Value.ToLower();
                  string currentAssamblyDirectoryName = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
 
                  if (currentWebDriver == nameof(WebDriverTypes.Firefox).ToLower())
                  {
                      FirefoxOptions driverOptions = new FirefoxOptions();
-                        //make window hidden. 
-                        driverOptions.AddArgument("--headless");
+                     //make window hidden. 
+                     driverOptions.AddArgument("--headless");
                      driver = new FirefoxDriver(currentAssamblyDirectoryName, driverOptions);
                  }
                  else if (currentWebDriver == nameof(WebDriverTypes.Chrome).ToLower())
                  {
 
                      ChromeOptions options = new ChromeOptions();
-                        //make window hidden. 
-                        options.AddArgument("--headless");
+                     //make window hidden. 
+                     options.AddArgument("--headless");
                      driver = new ChromeDriver(currentAssamblyDirectoryName, options);
                  }
                  else

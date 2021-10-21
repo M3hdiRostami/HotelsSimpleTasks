@@ -39,34 +39,34 @@ namespace XUnitTestProject
             //Arrange
             Hotel hotel = new Hotel()
             {
-                classification = 1,
-                hotelID = 1,
-                name = "",
-                reviewscore = 1,
+                Classification = 1,
+                HotelID = 1,
+                Name = "",
+                ReviewScore = 1,
             };
-            HotelRate hotelrate = new HotelRate()
+            HotelRate hotelRate = new HotelRate()
             {
-                adults = 1,
+                Adults = 1,
                 los = 1,
-                price = new Price()
+                Price = new Price()
                 {
-                    currency = "",
-                    numericFloat = 1,
+                    Currency = "",
+                    NumericFloat = 1,
                     numericInteger = 1,
                 },
-                rateDescription = "",
-                rateID = "",
-                rateName = "",
-                rateTags = new List<RateTag>(),
-                targetDay = DateTime.Now,
+                RateDescription = "",
+                RateID = "",
+                RateName = "",
+                RateTags = new List<RateTag>(),
+                TargetDay = DateTime.Now,
             };
-            HotelFilterResult hotelFilterResult = new HotelFilterResult() { hotel = hotel ,hotelRates=new List<HotelRate>()};
-            hotelFilterResult.hotelRates.Add(hotelrate);
+            HotelFilterResult hotelFilterResult = new HotelFilterResult() { Hotel = hotel ,HotelRates=new List<HotelRate>()};
+            hotelFilterResult.HotelRates.Add(hotelRate);
            
             var query= new GetHotelDetailsByParamsQuery();
-            query.arrivalDate = DateTime.Now;
-            query.hotelID = 1;
-            query.jsonDataContxt = new List<HotelFilterResult>() { hotelFilterResult };
+            query.ArrivalDate = DateTime.Now;
+            query.HotelID = 1;
+            query.JsonDataContxt = new List<HotelFilterResult>() { hotelFilterResult };
 
             var mediator =  new Mock<IMediator>();
             FilterHotelsController Controller = new FilterHotelsController(mediator.Object);

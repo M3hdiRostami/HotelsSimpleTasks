@@ -1,17 +1,18 @@
 using System.Collections.Generic;
+using System;
 namespace Tasks.DTOs
 {
 
     public class HotelRate
     {
-        public int adults { get; set; }
+        public int Adults { get; set; }
         public int los { get; set; }
-        public Price price { get; set; }
-        public string rateDescription { get; set; }
-        public string rateID { get; set; }
-        public string rateName { get; set; }
-        public List<RateTag> rateTags { get; set; }
-        public System.DateTime targetDay { get; set; }
+        public Price Price { get; set; }
+        public string RateDescription { get; set; }
+        public string RateID { get; set; }
+        public string RateName { get; set; }
+        public List<RateTag> RateTags { get; set; }
+        public DateTime TargetDay { get; set; }
     }
 
 }
