@@ -1,5 +1,5 @@
 # HotelsSimpleTasks
-Simple Tasks for scrapping &amp; Web API for Hotels:<br>
+### Simple Tasks for scrapping &amp; Web API for Hotels:<br>
 <ol>
 <li>Taking screenshot from webpage by scrapping it with help of Selenium and mark some points of screenshot, points can be configured in appsettings.json by JavaScript Selectors</li>
   service requires Firefox or Chrome(Version 94) to be installed on device depend on selected driver in appsettings.json (default=Firefox)  
@@ -8,4 +8,13 @@ Simple Tasks for scrapping &amp; Web API for Hotels:<br>
   Logging and validating models, queries,DTO,... in PipelineBehaviours
   Filter using linq in CQRS pattern
 </ol>
+
+
+### Screenshots
+
+
+![](https://raw.githubusercontent.com/M3hdiRostami/HotelsSimpleTasks/master/content/Task1Result.png)
+
+![](https://raw.githubusercontent.com/M3hdiRostami/HotelsSimpleTasks/master/content/ScreenshotSwagger%20UI.png)
+
 
